@@ -4,6 +4,7 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-color: black;
 }
 
 body {
@@ -13,12 +14,13 @@ body {
 }
 
 .search-box {
-  border: solid 5px black;
+  border: solid 5px #1DB954;
   display: inline-block;
   position: relative;
   border-radius: 50px;
 }
 .search-box input[type="text"] {
+  background-color: black;
   font-family: Raleway, sans-serif;
   font-size: 20px;
   font-weight: bold;
@@ -62,7 +64,7 @@ body {
 .search-box span:before, .search-box span:after {
   content: '';
   height: 25px;
-  border-left: solid 5px black;
+  border-left: solid 5px #1DB954;
   position: absolute;
   transform: rotate(-45deg);
 }
