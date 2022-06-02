@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+h1 {
+    padding-bottom: 200px;
+    color: white;
+}
 html, body {
  width: 100%;
  height: 100%;
@@ -12,7 +16,6 @@ body {
  justify-content: center;
  align-items: center;
 }
- 
 .search-box {
  border: solid 5px #1DB954;
  display: inline-block;
