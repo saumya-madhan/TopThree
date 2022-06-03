@@ -21,8 +21,8 @@ app.get("/", function (req, res) {
 app.get("/authorize", (req, res) => {
   var auth_query_parameters = new URLSearchParams({
     response_type: "code",
-    client_id: "3cedaa54050142518ea404cd808db3b5",
-    scope: "",
+    client_id: "022f1b89408c445784a6366ca1e28a16",
+    scope: ["user-library-read", "user-library-modify","playlist-modify-private","playlist-modify-public","playlist-read-private"],
     redirect_uri: "http://localhost:3000/callback",
   });
 
