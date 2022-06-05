@@ -1,1 +1,1 @@
-# Infuse
+# spotify-api-workshop
