@@ -5,6 +5,7 @@ const app = express();
 
 app.set("views", "./views");
 app.set("view engine", "pug");
+//app.set("view engine", "html");
 
 app.use(express.static("public"));
 
