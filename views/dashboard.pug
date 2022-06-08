@@ -1,7 +1,32 @@
 extends layout.pug
+
+
     
 block content
-    h1 Welcome!!  #{user.id} 
+  head
+  meta(charset='UTF-8')
+  title Infuse
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css')
+  link(rel='stylesheet' href='dist/style.css')
+  h1 Infuse.
+  .search-box
+  input(type='text' placeholder='Album, Artist, Genre ')
+  span
+  //-include:js dist/script.js
+
+  script.
+    var searchBox = document.querySelectorAll('.search-box input[type="text"] + span');
+
+    searchBox.forEach(elm => {
+        elm.addEventListener('click', () => {
+            elm.previousElementSibling.value = '';
+        });
+    });
+
+  
+
+//-     h1 Welcome!!  #{user.id} 
 
     //img(src=user.images[0].url, class='circular_image')
     
