@@ -1,4 +1,5 @@
 extends layout.pug
+<<<<<<< HEAD
     
 block content
     h1 Welcome! #{user.display_name} 
@@ -20,3 +21,15 @@ block content
     //-       td #{artist_name}
     //-       td: a(href='/recommendations?artist=' + artist_id+'&track='+track_id) #{track_name}
     //-       td: a(href=track_preview) Preview
+=======
+
+
+    
+block content
+    h1 Welcome!!  #{user.display_name}
+    body 
+    .search-box
+        input(type='text', placeholder='Album, Artist, Genre ')
+        span
+        script(src='/script.js')
+>>>>>>> 594f466b5a20e70c1831f577fbdc115f15267508
