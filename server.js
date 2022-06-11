@@ -8,7 +8,7 @@ app.set("view engine", "pug");
 
 app.use(express.static("public"));
 
-const redirect_uri = "http://localhost:3000/callback";
+const redirect_uri = "http://localhost:3001/callback";
 const client_id = "022f1b89408c445784a6366ca1e28a16";
 const client_secret = "cf6062eddf494a1aabbc98a126491f97";
 
@@ -23,7 +23,7 @@ app.get("/authorize", (req, res) => {
     response_type: "code",
     client_id: "022f1b89408c445784a6366ca1e28a16",
     scope: ["user-library-read", "user-library-modify","playlist-modify-private","playlist-modify-public","playlist-read-private"],
-    redirect_uri: "http://localhost:3000/callback",
+    redirect_uri: "http://localhost:3001/callback",
   });
 
   res.redirect(
@@ -90,7 +90,7 @@ app.get("/recommendations", async (req, res) => {
   res.render("recommendation", { tracks: data.tracks });
 });
 
-let listener = app.listen(3000, function () {
+let listener = app.listen(3001, function () {
   console.log(
     "Your app is listening on http://localhost:" + listener.address().port
   );

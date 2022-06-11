@@ -1,21 +1,13 @@
 extends layout.pug
     
 block content
-    h1 Welcome!!  #{user.id} 
-
+    h1 Welcome! #{user.display_name} 
     //img(src=user.images[0].url, class='circular_image')
-    
-//-   <meta charset="UTF-8">
-//-   <title>Infuse</title>
-//-   <meta name="viewport" content="width=device-width, initial-scale=1">
-//-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-  
-//-       <link rel="stylesheet" href="./style.css">
-
-  
-
-
+    body
+    .search-box
+      input(type='text', placeholder='Album, Artist, Genre ')
+      span
+      script(src='/script.js')
     //- table 
     //-   each t in tracks
     //-     tr 
