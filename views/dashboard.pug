@@ -3,9 +3,9 @@ extends layout.pug
 
     
 block content
-    h1 Welcome!!  #{user.id}
+    h1 Welcome!!  #{user.display_name}
     body 
-        .search-box
+    .search-box
         input(type='text', placeholder='Album, Artist, Genre ')
         span
         script(src='/script.js')
