@@ -6,7 +6,6 @@ const app = express();
 app.set("views", "./views");
 app.set("view engine", "pug");
 //app.set("view engine", "html");
-
 app.use(express.static("public"));
 
 const redirect_uri = "http://localhost:3000/callback";
