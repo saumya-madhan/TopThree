@@ -7,3 +7,5 @@ searchBox.forEach(elm => {
     elm.previousElementSibling.value = '';
   });
 });
+
+
