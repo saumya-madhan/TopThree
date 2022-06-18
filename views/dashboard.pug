@@ -6,6 +6,20 @@ block content
     h1 Welcome!!  #{user.display_name}
     body 
     .search-box
-        input(type='text', placeholder='Album, Artist, Genre ')
+        input(id = 'sbar', type='text', placeholder='Album, Artist, Genre ')
         span
-        script(src='/script.js')
+        script. 
+            var input = document.getElementById("sbar");
+            input.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    alert(input.value);
+                }
+            }); 
+            var searchBox = document.querySelectorAll('.search-box input[type="text"] + span');
+
+            searchBox.forEach(elm => {
+                elm.addEventListener('click', () => {
+                elm.previousElementSibling.value = '';
+                });
+            });
