@@ -14,8 +14,12 @@ block content
                 if (event.key === "Enter") {
                     event.preventDefault();
                     alert(input.value);
+                    script()
                 }
             }); 
+
+
+            
             var searchBox = document.querySelectorAll('.search-box input[type="text"] + span');
 
             searchBox.forEach(elm => {
