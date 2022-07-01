@@ -3,7 +3,7 @@ extends layout.pug
 
     
 block content
-    h1 Welcome  #{user.display_name} !
+    h1 Welcome!!  #{user.display_name}
     body 
     .search-box
         input(id = 'sbar', type='text', placeholder='Album, Artist, Genre ')
@@ -14,24 +14,8 @@ block content
                 if (event.key === "Enter") {
                     event.preventDefault();
                     alert(input.value);
-                    const response = await fetch("https://api.spotify.com/v1/search", {
-                        method: "get",
-                        body: body, //?
-                        headers: {
-                        //-"Content-type": "application/x-www-form-urlencoded",
-                        Authorization:
-                            "Basic " +
-                            Buffer.from(client_id + ":" + client_secret).toString("base64"),
-                        },
-                    });
-                
-                    script()
                 }
             }); 
-    
-
-
-            
             var searchBox = document.querySelectorAll('.search-box input[type="text"] + span');
 
             searchBox.forEach(elm => {
@@ -39,6 +23,3 @@ block content
                 elm.previousElementSibling.value = '';
                 });
             });
-
-            
-            
