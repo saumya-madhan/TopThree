@@ -70,11 +70,26 @@ async function getData(endpoint) {
   return data;
 }
 
+async function getSearch(input) {
+  const response = await fetch("https://api.spotify.com/v1/search?q=" + input + "&type=album", {
+    method: "get",
+    headers: {
+      Authorization: "Bearer " + global.access_token,
+    },
+  });
+  
+  const data = await response.json();
+  return data;
+ }
+ 
+
+
 app.get("/dashboard", async (req, res) => {
   const userInfo = await getData("/me");
   const tracks = await getData("/me/tracks?limit=10");
-
-  res.render("dashboard", { user: userInfo, tracks: tracks.items });
+  
+  res.render("dashboard", { user: userInfo, tracks: tracks.items});
+  
 });
 
 app.get("/recommendations", async (req, res) => {
