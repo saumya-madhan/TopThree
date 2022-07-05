@@ -1,0 +1,13 @@
+extends layout.pug
+
+    
+block content
+    head
+        script(type='text/javascript', src='server.js')
+    h1 Welcome!!  #{user.display_name}
+    table 
+      each t in results
+        tr 
+          - var track_name = t.name
+
+          td #{track_name}

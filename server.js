@@ -69,12 +69,16 @@ async function getData(endpoint) {
   return data;
 }
 
+
+
 app.get("/dashboard", async (req, res) => {
   const userInfo = await getData("/me");
   const tracks = await getData("/me/tracks?limit=10");
-
-  res.render("dashboard", { user: userInfo, tracks: tracks.items });
+  const searchResults = await getData("/search?q="+req.params.q+"&type=album&limit=3");
+  const access_token = global.access_token;
+  res.render("dashboard", { token:access_token, user: userInfo, tracks: tracks.items, results: searchResults.albums.items});
 });
+
 
 app.get("/recommendations", async (req, res) => {
   const artist_id = req.query.artist;

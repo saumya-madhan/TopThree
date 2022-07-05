@@ -6,7 +6,12 @@ html, body {
 	padding: 0;
 	margin: 0;
 }
-
+.welcome {
+	font-size: 50pt;
+	top: 300px;
+	position:absolute;
+	color: white;
+}
 body {
 	display: flex;
 	justify-content: center;
