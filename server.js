@@ -98,12 +98,9 @@ app.get("/dashboard", async (req, res) => {
 });
 
 
-app.get("/results", async (req, res) => {
- // extract json opject
- // make call to search api
- // return json 
+app.get("/results", async (req, res) => { 
  var albumName = req.query.name;
- const response = await fetch("https://api.spotify.com/v1/search?q=" + albumName + "&type=album", {
+ const response = await fetch("https://api.spotify.com/v1/search?q=" + albumName + "&type=album" + "&market=US&limit=1", {
   method: "get",
   headers: {
     Authorization: "Bearer " + global.access_token,
@@ -111,12 +108,10 @@ app.get("/results", async (req, res) => {
 });
 
 const data = await response.json();
- res.json(data)
-
-//res.json(req.body)
-// var payload = req.payload   // <-- this is the important line
-
-//     res.json({"output": payload})
+// albums->items->artits->name
+// var obj = JSON.parse(data);
+// console.log(JSON.parse(data)[0]);
+res.json(data);
   
 });
 
