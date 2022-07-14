@@ -20,7 +20,7 @@ block content
                     event.preventDefault();
                     var aToken = document.getElementsByName('access')[0].content;
                 $.ajax({
-                    url: 'https://api.spotify.com/v1/search?q='+input.value+'r&type=album&limit=5',
+                    url: 'https://api.spotify.com/v1/search?q='+input.value+'r&type=album&limit=9',
                     type: 'GET',
                     headers: {
                         'Authorization' : 'Bearer ' + aToken
@@ -28,22 +28,47 @@ block content
                     success: function(data) {
                         console.log(data);
                         var album = data.albums.items;
+                        var table = document.createElement("table");
+                        table.setAttribute("id", "myTable");
+                        var i = 0;
+                        var j = 0;
+                        var k = 0;
+                        for (var r = 0; r < 3; r++) { // create DIV element 
+                            var row = table.insertRow(-1);
+                            for (var p = 0; p < 3; p++) { 
+                            var pic = row.insertCell(-1);
+                            const img = new Image(300, 400); // width, height
+                            img.src = album[i].images[0].url;
+                            pic.appendChild(img);
+                            i++;
+                            }
+                            var row2 = table.insertRow(-1);
+                            for (var p = 0; p < 3; p++) { 
+                            var title = row2.insertCell(-1);
+                            title.appendChild(document.createTextNode(album[j].name));
+                            j++;
+                            }
 
-                        var x = document.createElement("TABLE");
-                            x.setAttribute("id", "myTable");
-                            document.body.appendChild(x);
-                        
-                        for (var i = 0; i < 5; i++) {
-                            var y = document.createElement("TR");
-                            y.setAttribute("id", "myTr");
-                            document.getElementById("myTable").appendChild(y);
+                            var row3 = table.insertRow(-1);
+                            for (var p = 0; p < 3; p++) { 
+                            var artist = row3.insertCell(-1);
+                            artist.appendChild(document.createTextNode("By "+album[k].artists[0].name));
+                            k++;
+                            }
+                                //- var txt = document.createTextNode(album[i].name); // create text node
+                                //- div.appendChild(txt);                    // append text node to the DIV
 
-                            var z = document.createElement("TR");
-                            var t = document.createTextNode(album[i].name);
-                            z.appendChild(t);
-                            document.getElementById("myTr").appendChild(z);
+                            //- var row = table.insertRow(-1);
+                            //- var pic = row.insertCell(-1);
+                            //- pic.appendChild(txt);
+                            //- var title = row.insertCell(-1);
+                            //- title.appendChild(document.createTextNode(album[i].name));
+                            //- var artist = row.insertCell(-1);
+                            //- artist.appendChild(document.createTextNode(album[i].artists[0].name));
+                             
                         }
-                        //document.write(data.albums.items[0].artists[0].name);
+                        
+                        document.body.appendChild(table);
                     }
                 });
                 }

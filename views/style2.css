@@ -3,38 +3,7 @@ h1 {
     padding-bottom: 200px;
     color: white;
 }
-img {
-    padding: 10%;
-}
-
-.welcome {
-    color: white;
-    top:100px;
-    position: absolute;
-    font-size: 40pt;
-    font-weight: 900;
-    letter-spacing: -.02em;
-    line-height: 1.2;
-}
-#myTable {
-    position: absolute;
-    top: 300px;
-}
-tr {
-    color: white;
-    text-align: center;
-    padding: 5;
-}
-p {
-    color: white;
-    /* top:300px;
-    position: absolute; */
-    font-size: 20pt;
-    font-weight: 200;
-    letter-spacing: -.02em;
-    line-height: 1.2;
-}
-html, body {
+html, body, a {
  width: 100%;
  height: 100%;
  padding: 0;
@@ -50,8 +19,7 @@ body {
 .search-box {
  border: solid 5px #1DB954;
  display: inline-block;
- position: absolute;
- top: 200px;
+ position: relative;
  border-radius: 50px;
 }
 .search-box input[type="text"] {
