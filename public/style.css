@@ -25,6 +25,9 @@ tr {
     text-align: center;
     padding: 5;
 }
+td {
+    padding-bottom: 5px;
+}
 p {
     color: white;
     /* top:300px;
