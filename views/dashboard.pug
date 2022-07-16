@@ -5,6 +5,7 @@ block content
     head
         script(src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous")
         meta(name='access', content=token)
+        meta(name='search', content=search)
     body   
     .welcome Welcome #{user.display_name}!
     .search-box
@@ -13,12 +14,14 @@ block content
         span
     
         script.
+
             var albums = "";
             var input = document.getElementById("sbar");
             input.addEventListener("keypress", function(event) {
                 if (event.key === "Enter") {
                     event.preventDefault();
                     var aToken = document.getElementsByName('access')[0].content;
+                    var search = document.getElementsByName('search')[0].content;
                 $.ajax({
                     url: 'https://api.spotify.com/v1/search?q='+input.value+'r&type=album&limit=9',
                     type: 'GET',
@@ -26,7 +29,13 @@ block content
                         'Authorization' : 'Bearer ' + aToken
                     },
                     success: function(data) {
-                        console.log(data);
+                        console.log(search);
+                        if (search) {
+                           const element = document.getElementById("myTable");
+                            element.remove(); 
+                        }
+                        document.getElementsByName('search')[0].content = true;
+                        console.log(search);
                         var album = data.albums.items;
                         var table = document.createElement("table");
                         table.setAttribute("id", "myTable");
@@ -54,18 +63,7 @@ block content
                             var artist = row3.insertCell(-1);
                             artist.appendChild(document.createTextNode("By "+album[k].artists[0].name));
                             k++;
-                            }
-                                //- var txt = document.createTextNode(album[i].name); // create text node
-                                //- div.appendChild(txt);                    // append text node to the DIV
-
-                            //- var row = table.insertRow(-1);
-                            //- var pic = row.insertCell(-1);
-                            //- pic.appendChild(txt);
-                            //- var title = row.insertCell(-1);
-                            //- title.appendChild(document.createTextNode(album[i].name));
-                            //- var artist = row.insertCell(-1);
-                            //- artist.appendChild(document.createTextNode(album[i].artists[0].name));
-                             
+                            }    
                         }
                         
                         document.body.appendChild(table);
