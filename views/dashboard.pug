@@ -49,6 +49,7 @@ block content
                             const img = new Image(300, 400); // width, height
                             img.src = album[i].images[0].url;
                             pic.appendChild(img);
+                            img.setAttribute("onclick","window.location = '/playlist';");
                             i++;
                             }
                             var row2 = table.insertRow(-1);

@@ -79,6 +79,11 @@ app.get("/dashboard", async (req, res) => {
   res.render("dashboard", { token:access_token, user: userInfo, tracks: tracks.items, results: searchResults.albums.items});
 });
 
+app.get("/playlist", async (req, res) => {
+
+  res.render("playlist", {test: "hi"});
+});
+
 
 app.get("/recommendations", async (req, res) => {
   const artist_id = req.query.artist;
