@@ -1,3 +1,49 @@
 extends layout.pug
+block content
+    head
+        meta(name='results', content=results)
+        meta(name='search', content=search)
+    h1.results Top 3 Albums
+    script.
+                                
+                       var search = document.getElementsByName('search')[0].content;
+                       if (search) {
+                           const element = document.getElementById("myTable");
+                            element.remove(); 
+                        }
+                         document.getElementsByName('search')[0].content = true;
+                         var album =  document.getElementsByName('results')[0].content;
+                         album= JSON.parse(album)
+                         var table = document.createElement("table");
+                         table.setAttribute("id", "myTable");
+                        var i = 0;
+                        var j = 0;
+                        var k = 0;
+                             var row = table.insertRow(-1);
+                        for (var p = 0; p < 3; p++) { 
+                             var pic = row.insertCell(-1);
+                            const img = new Image(300, 400); // width, height
+                             img.src = album[i].images[0].url;
+                             pic.appendChild(img);
+                        //-     sessionStorage.setItem("albumName", album[i].id);
+                        //-     img.setAttribute("onclick","location.href = '/playlist';");
+                             i++;
+                        }
+                             var row2 = table.insertRow(-1);
+                             for (var p = 0; p < 3; p++) { 
+                             var title = row2.insertCell(-1);
+                             title.appendChild(document.createTextNode(album[j].name));
+                             j++;
+                         }
 
-//- print out json
+                            var row3 = table.insertRow(-1);
+                            for (var p = 0; p < 3; p++) { 
+                             var artist = row3.insertCell(-1);
+                             artist.appendChild(document.createTextNode("By "+album[k].artists[0].name));
+                             k++;
+                             }    
+                        //}
+                         document.body.appendChild(table);
+
+                         console.log(document.getElementsByName('results')[0].content);
+//- //- print out json

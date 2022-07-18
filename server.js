@@ -89,29 +89,27 @@ async function getData(endpoint) {
 
 
 app.get("/dashboard", async (req, res) => {
-  //const userInfo = await getData("/me");
-  //const tracks = await getData("/me/tracks?limit=10");
-  //const albums = await getSearch(input);
-  res.render("dashboard");
- // res.json("this");
-  
+  const userInfo = await getData("/me");
+  const access_token = global.access_token;
+  res.render("dashboard", {user: userInfo});
 });
-
 
 app.get("/results", async (req, res) => { 
  var albumName = req.query.name;
- const response = await fetch("https://api.spotify.com/v1/search?q=" + albumName + "&type=album" + "&market=US&limit=1", {
-  method: "get",
-  headers: {
-    Authorization: "Bearer " + global.access_token,
-  },
-});
+ const searchResults = await getData("/search?q="+albumName+"&type=album&limit=3");
+//  const response = await fetch("https://api.spotify.com/v1/search?q=" + albumName + "&type=album" + "&market=US&limit=1", {
+//   method: "get",
+//   headers: {
+//     Authorization: "Bearer " + global.access_token,
+//   },
+// });
 
-const data = await response.json();
+// const data = await response.json();
 // albums->items->artits->name
 // var obj = JSON.parse(data);
 // console.log(JSON.parse(data)[0]);
-res.json(data);
+//res.json(data);
+res.render("results", {search: false, results: searchResults.albums.items});
   
 });
 

@@ -3,7 +3,7 @@ extends layout.pug
 
     
 block content
-    h1 Welcome!!  
+    h1 Welcome #{user.display_name}!!  
     body 
     .search-box
         input(id = 'sbar', type='text', placeholder='Album, Artist, Genre ')
@@ -17,7 +17,6 @@ block content
             input.addEventListener("keypress", function(event) {
                 if (event.key === "Enter") {
                     event.preventDefault();
-                    alert(input.value);
                     window.location = '/results?name=' + input.value;
                     //- const xhr = new XMLHttpRequest()
                     //- // open a POST request
