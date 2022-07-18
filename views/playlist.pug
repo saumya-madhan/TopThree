@@ -1,9 +1,35 @@
 extends layout.pug
 block content
+    head
+    script(src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous")
+    meta(name='access', content=token)
+    meta(name='user', content=user.id)
     body
-        h1 Create Your Playlist.
+        h1 Create Your Playlist #{user.display_name}!
         .centered
             .group
                 input(type="text" id="name" required)
                 label(for="name") Name
                 .bar
+    script.
+        var album = sessionStorage.getItem("albumName");
+        console.log(album);
+        sessionStorage.removeItem(album);
+        sessionStorage.clear();
+        var aToken = document.getElementsByName('access')[0].content;
+        var userId = document.getElementsByName('user')[0].content;
+        console.log(userId.display_name);
+            $.ajax({
+             url: 'https://api.spotify.com/v1/users/'+userId+'/playlists',
+             method: "POST",
+             data: {
+                 name: JSON.stringify({name: "test", public: false})
+             },
+             headers: {
+                 'Authorization': 'Bearer ' + aToken,
+                 'Content-Type': 'application/json'
+             },
+             success: function(response) {
+                 console.log(response);
+             }
+        });

@@ -80,8 +80,11 @@ app.get("/dashboard", async (req, res) => {
 });
 
 app.get("/playlist", async (req, res) => {
+  const userInfo = await getData("/me");
+  const tracks = await getData("/me/tracks?limit=10");
+  const access_token = global.access_token;
 
-  res.render("playlist", {test: "hi"});
+  res.render("playlist", {token:access_token, user: userInfo, tracks: tracks.items});
 });
 
 

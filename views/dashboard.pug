@@ -14,7 +14,6 @@ block content
         span
     
         script.
-
             var albums = "";
             var input = document.getElementById("sbar");
             input.addEventListener("keypress", function(event) {
@@ -35,7 +34,6 @@ block content
                             element.remove(); 
                         }
                         document.getElementsByName('search')[0].content = true;
-                        console.log(search);
                         var album = data.albums.items;
                         var table = document.createElement("table");
                         table.setAttribute("id", "myTable");
@@ -49,7 +47,8 @@ block content
                             const img = new Image(300, 400); // width, height
                             img.src = album[i].images[0].url;
                             pic.appendChild(img);
-                            img.setAttribute("onclick","window.location = '/playlist';");
+                            sessionStorage.setItem("albumName", album[i].id);
+                            img.setAttribute("onclick","location.href = '/playlist';");
                             i++;
                             }
                             var row2 = table.insertRow(-1);
